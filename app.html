@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>A-群管</title>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.4.1/css/mdui.min.css">
+  <script src="https://cdn.bootcss.com/mdui/0.4.1/js/mdui.min.js"></script>
+</head>
+
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <header id="appbar" class="mdui-appbar mdui-appbar-scroll-toolbar-hide">
+    <div class="mdui-toolbar mdui-color-theme">
+      <span id="title" class="mdui-typo-title"></span>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+    <div class="mdui-tab mdui-tab-full-width mdui-color-theme" mdui-tab>
+      <a href="#settings" class="mdui-ripple mdui-ripple-white">设置</a>
+      <a href="#donation" class="mdui-ripple mdui-ripple-white">帮助</a>
+    </div>
+    <script>
+      var $$ = mdui.JQ;
+      $$('#title').text(document.title);
+    </script>
+    <script>
+      if (typeof script === "undefined")
+        var lua = {
+          onAction: function (event) {
+            if (event === 'gm') {
+              return '{"hm":["000000", "111111","222233"],"lm":[]}';
+            }
+          }
+        };
+      else
+        var lua = script;
+    </script>
+  </header>
+
+  <div class="mdui-container">
+    <div id="settings">
+      <div class="mdui-panel mdui-m-t-2" mdui-panel>
+
+        <div class="mdui-panel-item">
+          <div class="mdui-panel-item-header">
+            <div class="mdui-panel-item-title">大主人</div>
+            <div class="mdui-panel-item-summary">全部权限</div>
+            <!-- keyboard_arrow_down -->
+            <i class="mdui-panel-item-arrow mdui-icon material-icons">&#xe313;</i>
+          </div>
+          <div id="hm_body" class="mdui-panel-item-body">
+            <div class="mdui-text-color-theme-accent">无</div>
+            <div class="mdui-panel-item-actions">
+              <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-panel-item-close>关闭</button>
+              <button onclick="addhm()" class="mdui-btn mdui-ripple mdui-text-color-theme-accent">添加</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdui-panel-item">
+          <div class="mdui-panel-item-header">
+            <div class="mdui-panel-item-title">小主人</div>
+            <div class="mdui-panel-item-summary">部分权限</div>
+            <i class="mdui-panel-item-arrow mdui-icon material-icons">&#xe313;</i>
+          </div>
+          <div id="lm_body" class="mdui-panel-item-body">
+            <div class="mdui-text-color-theme-accent">无</div>
+            <div class="mdui-panel-item-actions">
+              <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-panel-item-close>关闭</button>
+              <button onclick="addlm()" class="mdui-btn mdui-ripple mdui-text-color-theme-accent">添加</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="mdui-list mdui-list-dense" mdui-collapse="{accordion: true}">
+        <li class="mdui-subheader-inset">以下内容请先忽视</li>
+        <li class="mdui-collapse-item mdui-collapse-item-open">
+          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+            <div class="mdui-list-item-content">Audience</div>
+            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe313; </i>
+          </div>
+          <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">Overview</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">Language</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">Location</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">New vs Returning</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+          </ul>
+        </li>
+        <li class="mdui-subheader-inset">请忽视</li>
+        <li class="mdui-collapse-item mdui-collapse-item-open">
+          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+            <div class="mdui-list-item-content">Audience</div>
+            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe313; </i>
+          </div>
+          <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">Overview</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">Language</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">Location</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+              <div class="mdui-list-item-content">New vs Returning</div>
+              <label class="mdui-switch">
+                <input type="checkbox" />
+                <i class="mdui-switch-icon"></i>
+              </label>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="donation">
+      <button class="mdui-m-t-1 mdui-m-b-2 mdui-btn mdui-btn-block mdui-btn-raised mdui-ripple mdui-color-theme-accent" mdui-dialog="{target: '#dialog_help'}">点击查看使用说明</button>
+      <a href="./help.html" class="mdui-m-b-2 mdui-btn mdui-btn-block mdui-btn-raised mdui-ripple mdui-color-theme-accent">点击查看使用说明2</a>
+      <a class="mdui-m-b-2 mdui-btn mdui-btn-block mdui-btn-raised mdui-ripple mdui-color-theme-accent" target="_blank" href="https://jq.qq.com/?_wv=1027&k=5yxSZSZ">点击加入脚本交流群</a>
+      <div class="mdui-text-center mdui-typo-caption-opacity">如果您喜欢 可以捐赠 截图并使用微信扫描二维码</div>
+      <img class="mdui-hidden-sm-up mdui-img-fluid mdui-img-rounded mdui-center" src="./mm_reward_qrcode.png" alt="赞赏码">
+      <img class="mdui-hidden-xs mdui-img-rounded mdui-center" width="600" height="600" src="./mm_reward_qrcode.png" alt="赞赏码">
+    </div>
+
+    <div class="mdui-dialog" id="dialog_help">
+      <iframe width="100%" height="400" frameborder="0" src="./help.html"></iframe>
+
+      <div class="mdui-dialog-actions">
+        <button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function addhm() {
+      mdui.prompt("请输入QQ号-添加大主人", function (value) {
+        lua.onAction('addhm: ' + value);
+        var hmBody = $$('#hm_body');
+        hmBody.children().first().filter(function (idx, e) { return e.innerHTML === '无' }).remove();
+        hmBody.prepend('<div onclick="removehm(this.innerHTML)" class="mdui-m-b-2 mdui-typo-headline-opacity mdui-text-color-theme-accent">' + value + '</div>');
+      }, function () { }, { confirmText: "确定", cancelText: "取消" });
+    }
+
+    function addlm() {
+      mdui.prompt("请输入QQ号-添加小主人", function (value) {
+        lua.onAction('addlm: ' + value);
+        var lmBody = $$('#lm_body');
+        lmBody.children().first().filter(function (idx, e) { return e.innerHTML === '无' }).remove()
+        lmBody.prepend('<div onclick="removelm(this.innerHTML)" class="mdui-m-b-2 mdui-typo-headline-opacity mdui-text-color-theme-accent">' + value + '</div>');
+      }, function () { }, { confirmText: "确定", cancelText: "取消" });
+    }
+
+    function removehm(uin) {
+      mdui.snackbar('您确定要删除大主人: [' + uin + '] 吗?', {
+        timeout: 2500,
+        buttonText: '确定',
+        onButtonClick: function () {
+          lua.onAction('removehm: ' + uin);
+          $$('#hm_body').children().filter(function (idx, element) {
+            return element.innerHTML === uin;
+          }).remove();
+        }
+      });
+    }
+
+    function removelm(uin) {
+      mdui.snackbar('您确定要删除小主人: [' + uin + '] 吗?', {
+        timeout: 2500,
+        buttonText: '确定',
+        onButtonClick: function () {
+          lua.onAction('removelm: ' + uin);
+          $$('#lm_body').children().filter(function (idx, element) {
+            return element.innerHTML === uin;
+          }).remove();
+        }
+      });
+    }
+
+    var gm = JSON.parse(lua.onAction('gm'));
+    if (gm.hm.length) {
+      var hmBody = $$('#hm_body');
+      hmBody.children().first().remove();
+      $$.each(gm.hm, function (i, e) {
+        hmBody.prepend('<div onclick="removehm(this.innerHTML)" class="mdui-m-b-2 mdui-typo-headline-opacity mdui-text-color-theme-accent">' + e + '</div>');
+      });
+    }
+    if (gm.lm.length) {
+      var lmBody = $$('#lm_body');
+      lmBody.children().first().remove();
+      $$.each(gm.lm, function (i, e) {
+        lmBody.prepend('<div onclick="removelm(this.innerHTML)" class="mdui-m-b-2 mdui-typo-headline-opacity mdui-text-color-theme-accent">' + e + '</div>');
+      });
+    }
+  </script>
+
+</body>
+
+</html>
